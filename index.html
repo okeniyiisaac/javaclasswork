@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <!-- <img src="sapphire store logo.png"> -->
+    <h1>    USER-LISTS</h1>
+    <div id="user-list"></div>
+    <script>
+
+// 1. Fetch :fecth is used to make HTTP requests*
+// fetch("https://fakestoreapi.com/products")
+//     .then((response) => response.json())
+//     .then((data) => console.log(data))
+//     .catch((error) => console.error(error));
+
+ //2. ASYNCRONOUS FUNCTION (ASYNC AND AWAIT)(GENERAL WAY OF CALLING A FUCTION)
+ //1. Create a function
+// 2. Create try and catch blocks
+// 3. catch the error
+// 4. Fetch your Api
+//5. Convert to response to json
+//6. Write your async function
+//7. call your function
+//8. consume your API
+// async function getProducts () {
+//      try{
+//        const response =  await fetch("https://fakestoreapi.com/products")
+//        const products = await response.json()
+//     //    console.log(products);
+
+//        const productList = document.querySelector("#product-list");
+
+//        products.forEach((product) => {
+//               const productCard = document.createElement("div");
+
+//               productCard.innerHTML = ` 
+//                 <img src="${product.image}" style="width: 200px; height: 200px;"/> 
+//                 <h2 style="font-size: 16px; font-weight: bold; color: #534f0cf0">${product.title}</h2>
+//                 <p>${product.description}</p> 
+//                 <p>$${product.price}</p> 
+//                 <p>Category: ${product.category}</p>
+//               `;
+//               productList.appendChild(productCard);
+//        });
+
+//     } catch (error) {
+//         console.error("Error:", error);
+//     }
+// }
+// getProducts();
+
+// async function getPosts () {
+//        try{
+//         const response =  await fetch("https://dummyjson.com/posts")
+//         const data = await response.json();
+//         console.log(data);
+//        }catch (error) {
+//             console.error("Error:", error)
+//        }
+//     }
+//     getPosts();
+
+
+
+       async function getUserList() {
+        try {
+            const response = await fetch("https://dummyjson.com/users");
+            const data = await response.json();
+            console.log(data)
+
+            const userList = document.querySelector("#user-list");
+
+            data.users.forEach((user) => {
+                const userDiv = document.createElement("div");
+                userDiv.innerHTML = `
+                    <p>User ID: "${user.id}"</p>
+                    <p>Name: "${user.firstName}" ${user.lastName}</p>
+                    <p>Email: "${user.email}"</p>
+                    <p>Age: "${user.age}"</p>
+                    <p>Phone: "${user.phone}"</p>
+                    <p>Username:" ${user.username}"</p>
+                     <p>Password: "${user.password}"</p>
+                        <p>Email: "${user.email}"</p>
+                    <img src ="${user.image}">
+                    <p>Hair: "${user.hair.color}" ${user.hair.type}<p>
+                         
+                    <hr/>
+
+
+                    
+                `;
+                userList.appendChild(userDiv);
+            });
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+    getUserList();
+    </script>
+
+</body>
+</html>
